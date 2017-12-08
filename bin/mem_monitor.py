@@ -135,17 +135,18 @@ class MemMonitor():
 
             rows = stdout.split('\n')
             data = rows[1].split()
+            print( data[1] ) 
             total_mem_physical = data[1]
             used_mem_physical = data[2]
             free_mem_physical = data[3]
+	    # HACK. Not sure what these are supposed to be, but these are invalid for free procps-ng 3.3.10
+            used_mem_wo_buffers = used_mem_physical
+            free_mem_wo_buffers = free_mem_physical
             data = rows[2].split()
-            used_mem_wo_buffers = data[2]
-            free_mem_wo_buffers = data[3]
-            data = rows[3].split()
             total_mem_swap = data[1]
             used_mem_swap = data[2]
             free_mem_swap = data[3]
-            data = rows[4].split()
+            data = rows[3].split()
             total_mem = data[1]
             used_mem = data[2]
             free_mem = data[3]
